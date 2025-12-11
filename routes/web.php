@@ -43,3 +43,5 @@ Route::fallback(function () {
         'message' => 'Maaf, halaman yang Anda cari tidak dapat ditemukan.'
     ], 404);
 });
+
+Route::get('/simulasi-molekul', [ChemistryController::class, 'simulasiMolekul'])->name('simulasi.molekul');

@@ -58,6 +58,14 @@ class ChemistryController extends Controller
     }
 
     /**
+ * Halaman Simulasi Molekul Interaktif
+ */
+public function simulasiMolekul()
+{
+    return view('simulasi-molekul');
+}
+
+    /**
      * Halaman Simulasi
      */
     public function simulasi()
