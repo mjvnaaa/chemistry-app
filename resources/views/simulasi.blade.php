@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Simulasi Interaktif')
+@section('title', 'Virtual Lab')
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12 px-4">
@@ -12,7 +12,7 @@
             </a>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 flex items-center justify-center gap-3">
                 <span class="text-5xl">🔬</span>
-                Simulasi Interaktif
+                Virtual Lab
             </h1>
             <p class="text-gray-600 text-lg">Visualisasikan interaksi molekul dan pengaruh suhu secara real-time!</p>
         </div>
@@ -23,7 +23,7 @@
             <div class="bg-white rounded-2xl shadow-xl p-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-3">
                     <span class="text-3xl">🎛️</span>
-                    Kontrol Simulasi
+                    Kontrol
                 </h2>
                 
                 <!-- Jenis Molekul -->
@@ -96,11 +96,11 @@
                 </div>
             </div>
 
-            <!-- Area Simulasi -->
+            <!-- Submikroskopik -->
             <div class="bg-white rounded-2xl shadow-xl p-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-3">
                     <span class="text-3xl">🧪</span>
-                    Area Simulasi
+                    Submikroskopik
                 </h2>
                 
                 <div class="relative bg-gradient-to-b from-blue-50 to-gray-100 rounded-xl overflow-hidden border-2 border-gray-300" 
@@ -202,7 +202,7 @@
                class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition text-center">
                 <span class="flex items-center justify-center gap-2">
                     <span>🧬</span>
-                    <span>Simulasi Molekul Interaktif</span>
+                    <span>Simulasi</span>
                 </span>
             </a>
             <a href="{{ route('materi') }}"

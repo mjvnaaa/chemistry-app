@@ -120,7 +120,7 @@
                                     <div class="bg-white/50 backdrop-blur-sm rounded-xl p-3 mt-3">
                                         <p class="text-sm text-gray-600 italic flex items-start gap-2">
                                             <span class="text-lg">💡</span>
-                                                                                    <span>{{ $sub['contoh'] }}</span>
+                                            <span>{{ $sub['contoh'] }}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -269,38 +269,47 @@
             </div>
         </div>
 
-        <!-- Enhanced Action Buttons -->
-        <div class="mt-10 grid md:grid-cols-2 gap-6">
-            <a href="{{ route('simulasi') }}" 
-               class="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
-                <!-- Hover Effect Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <!-- Enhanced Action Buttons - 3 TOMBOL -->
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Tombol Simulasi Molekul -->
+            <a href="{{ route('simulasi.molekul') }}" 
+               class="group relative bg-gradient-to-r from-pink-600 to-rose-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-r from-pink-700 to-rose-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                <div class="relative z-10 flex items-center justify-center gap-4">
-                    <span class="text-3xl">🔬</span>
-                    <div class="text-left">
+                <div class="relative z-10 flex flex-col items-center justify-center gap-3">
+                    <span class="text-5xl">🧬</span>
+                    <div>
                         <div class="text-lg font-semibold opacity-90">Lanjut ke</div>
-                        <div class="text-2xl">Simulasi Interaktif</div>
+                        <div class="text-xl">Simulasi Molekul</div>
                     </div>
-                    <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
                 </div>
             </a>
 
-            <a href="{{ route('kuis.index') }}" 
-               class="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Tombol Virtual Lab -->
+            <a href="{{ route('simulasi') }}" 
+               class="group relative bg-gradient-to-r from-green-600 to-teal-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-r from-green-700 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                <div class="relative z-10 flex items-center justify-center gap-4">
-                    <span class="text-3xl">📝</span>
-                    <div class="text-left">
-                        <div class="text-lg font-semibold opacity-90">Tes Pemahamanmu di</div>
-                        <div class="text-2xl">Kuis Interaktif</div>
+                <div class="relative z-10 flex flex-col items-center justify-center gap-3">
+                    <span class="text-5xl">🔬</span>
+                    <div>
+                        <div class="text-lg font-semibold opacity-90">Lanjut ke</div>
+                        <div class="text-xl">Virtual Lab</div>
                     </div>
-                    <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
+                </div>
+            </a>
+
+            <!-- Tombol Kuis -->
+            <a href="{{ route('kuis.index') }}" 
+               class="group relative bg-gradient-to-r from-orange-600 to-red-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-r from-orange-700 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div class="relative z-10 flex flex-col items-center justify-center gap-3">
+                    <span class="text-5xl">📝</span>
+                    <div>
+                        <div class="text-lg font-semibold opacity-90">Tes di</div>
+                        <div class="text-xl">Kuis Interaktif</div>
+                    </div>
                 </div>
             </a>
         </div>

@@ -215,7 +215,7 @@
                                     <div class="text-7xl">📝</div>
                                     <p class="text-gray-500 text-lg font-semibold">Belum ada siswa yang mengerjakan kuis.</p>
                                     <p class="text-gray-400 text-sm">Data akan muncul setelah siswa menyelesaikan kuis.</p>
-                                    <a href="{{ route('kuis') }}" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition">
+                                    <a href="{{ route('kuis.index') }}" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition">
                                         Mulai Kuis Siswa
                                     </a>
                                 </div>

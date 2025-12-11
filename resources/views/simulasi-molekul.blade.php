@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Simulasi Molekul Interaktif')
+@section('title', 'Simulasi')
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12 px-4">
@@ -8,11 +8,11 @@
         <!-- Header -->
         <div class="text-center mb-8">
             <a href="{{ route('landing') }}" class="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6 font-semibold">
-                ΓåÉ Kembali ke Home
+                Kembali ke Home
             </a>
             <h1 class="text-4xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-3">
                 <span class="text-5xl">🧬</span>
-                Simulasi Molekul Interaktif
+                Simulasi
             </h1>
             <p class="text-gray-600 text-lg">Seret molekul dan amati interaksi gaya antarmolekul secara real-time!</p>
         </div>
@@ -161,11 +161,11 @@
             </div>
         </div>
 
-        <!-- Tujuan Pembelajaran -->
+        <!-- Tujuan Simulasi -->
         <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-6 text-white">
             <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
                 <span class="text-3xl">🎯</span>
-                Tujuan Pembelajaran
+                Tujuan Simulasi
             </h3>
             <ul class="space-y-3">
                 <li class="flex items-start gap-3">
@@ -196,7 +196,7 @@
                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition text-center">
                 <span class="flex items-center justify-center gap-2">
                     <span>🔬</span>
-                    <span>Simulasi PhET</span>
+                    <span>Virtual Lab</span>
                 </span>
             </a>
             <a href="{{ route('kuis.index') }}"

@@ -131,25 +131,25 @@
             </div>
         </div>
 
-        <!-- Navigation Cards - Enhanced -->
+        <!-- Navigation Cards - Enhanced dengan 4 Cards -->
         <div class="text-center mb-12">
             <span class="inline-block bg-blue-100 text-blue-600 px-6 py-2 rounded-full text-sm font-bold mb-4">
                 LEARNING MODULES
             </span>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
-                📚 Modul Pembelajaran
+                🚀 Modul Pembelajaran
             </h2>
             <p class="text-gray-600 text-lg">Pilih modul untuk memulai perjalanan belajarmu</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <!-- Card Materi -->
             <a href="{{ route('materi') }}" class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden">
                 <!-- Gradient Overlay on Hover -->
                 <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div class="relative z-10">
-                    <div class="text-7xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">📖</div>
+                    <div class="text-7xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">📚</div>
                     <h3 class="text-3xl font-bold text-gray-800 group-hover:text-white mb-4 transition-colors duration-300">Materi</h3>
                     <p class="text-gray-600 group-hover:text-white/90 mb-6 transition-colors duration-300">
                         Pelajari konsep dasar gaya antar molekul dengan penjelasan lengkap
@@ -163,18 +163,37 @@
                 </div>
             </a>
 
-            <!-- Card Simulasi -->
+            <!-- Card Simulasi Molekul -->
+            <a href="{{ route('simulasi.molekul') }}" class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-pink-500 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-7xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">🧬</div>
+                    <h3 class="text-3xl font-bold text-gray-800 group-hover:text-white mb-4 transition-colors duration-300">Simulasi</h3>
+                    <p class="text-gray-600 group-hover:text-white/90 mb-6 transition-colors duration-300">
+                        Seret molekul dan amati interaksi gaya antarmolekul
+                    </p>
+                    <div class="flex items-center text-pink-600 group-hover:text-white font-semibold transition-colors duration-300">
+                        <span>Coba Sekarang</span>
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card Virtual Lab (BARU) -->
             <a href="{{ route('simulasi') }}" class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div class="relative z-10">
                     <div class="text-7xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">🔬</div>
-                    <h3 class="text-3xl font-bold text-gray-800 group-hover:text-white mb-4 transition-colors duration-300">Simulasi</h3>
+                    <h3 class="text-3xl font-bold text-gray-800 group-hover:text-white mb-4 transition-colors duration-300">Virtual Lab</h3>
                     <p class="text-gray-600 group-hover:text-white/90 mb-6 transition-colors duration-300">
                         Visualisasi interaktif molekul & pengaruh suhu secara real-time
                     </p>
                     <div class="flex items-center text-green-600 group-hover:text-white font-semibold transition-colors duration-300">
-                        <span>Coba Sekarang</span>
+                        <span>Buka Lab</span>
                         <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
