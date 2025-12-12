@@ -18,11 +18,7 @@
                         Dashboard Guru
                     </h1>
                     <p class="text-lg text-gray-600 mt-2">Monitoring Hasil Kuis Siswa - Gaya Antar Molekul</p>
-                    @if(Session::has('guru_login_time'))
-                        <p class="text-sm text-gray-500 mt-1">
-                            Login: {{ Session::get('guru_login_time')->format('d/m/Y H:i') }} WIB
-                        </p>
-                    @endif
+                    {{-- Hapus keterangan waktu login --}}
                 </div>
                 
                 <div class="flex flex-wrap gap-3">
@@ -90,7 +86,7 @@
                 @include('components.statistic-card', [
                     'title' => 'Tidak Lulus',
                     'value' => $statistics['tidak_lulus'],
-                    'icon' => '❌', // Mengganti emoji dari 📚 ke ❌ agar lebih sesuai dengan 'Tidak Lulus'
+                    'icon' => '❌',
                     'color' => 'red',
                 ])
             </div>
@@ -136,7 +132,7 @@
                         <thead class="bg-purple-50 border-b border-purple-200 sticky top-0">
                             <tr>
                                 <th class="p-4 text-purple-800 font-extrabold text-sm uppercase tracking-wider">No</th>
-                                <th class="p-4 text-purple-800 font-extrabold text-sm uppercase tracking-wider">Tanggal & Waktu</th>
+                                <th class="p-4 text-purple-800 font-extrabold text-sm uppercase tracking-wider">Tanggal</th> {{-- Diubah dari "Tanggal & Waktu" --}}
                                 <th class="p-4 text-purple-800 font-extrabold text-sm uppercase tracking-wider">Nama Siswa</th>
                                 <th class="p-4 text-purple-800 font-extrabold text-sm uppercase tracking-wider">Kelas</th>
                                 <th class="p-4 text-purple-800 font-extrabold text-sm uppercase tracking-wider text-center">Absen</th>
@@ -172,7 +168,7 @@
                                     <td class="p-4 text-gray-700 font-medium">{{ $index + 1 }}</td>
                                     <td class="p-4 text-sm text-gray-600 whitespace-nowrap">
                                         <span class="font-medium block">{{ date('d/m/Y', strtotime($row['tanggal'])) }}</span>
-                                        <span class="text-xs text-gray-500">{{ date('H:i', strtotime($row['tanggal'])) }} WIB</span>
+                                        {{-- Hapus baris waktu --}}
                                     </td>
                                     <td class="p-4 font-semibold text-gray-800 whitespace-nowrap">
                                         <div class="flex items-center gap-2">
