@@ -32,9 +32,9 @@
                 <a href="#tujuan" class="bg-white text-purple-600 font-bold py-4 px-8 rounded-full shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300">
                     🎯 Mulai Belajar
                 </a>
-                <a href="{{ route('simulasi') }}" class="bg-yellow-400 text-purple-900 font-bold py-4 px-8 rounded-full shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 transition-all duration-300">
+                <!-- <a href="{{ route('simulasi') }}" class="bg-yellow-400 text-purple-900 font-bold py-4 px-8 rounded-full shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 transition-all duration-300">
                     🔬 Lihat Simulasi
-                </a>
+                </a> -->
             </div>
 
             <!-- Scroll Down Indicator - More Attractive -->

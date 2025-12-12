@@ -5,209 +5,212 @@
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12 px-4">
     <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <a href="{{ route('landing') }}" class="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6 font-semibold">
-                Kembali ke Home
+        <div class="text-center mb-8 fade-in">
+            <a href="{{ route('landing') }}" class="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6 font-semibold transition-colors duration-300">
+                🏠 Kembali ke Home
             </a>
-            <h1 class="text-4xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-3">
+            <h1 class="text-4xl font-extrabold text-gray-800 mb-3 flex items-center justify-center gap-3">
                 <span class="text-5xl">🧬</span>
-                Simulasi
+                Simulasi Molekul
             </h1>
             <p class="text-gray-600 text-lg">Seret molekul dan amati interaksi gaya antarmolekul secara real-time!</p>
         </div>
 
-        <!-- Simulasi Container -->
-        <div id="simulation-container" class="bg-white rounded-2xl shadow-2xl p-4 mb-6">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-                    <span class="text-2xl">🔬</span>
+        <div id="simulation-container" class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 mb-8 border-l-8 border-purple-500 fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <span class="text-3xl">🔬</span>
                     Lab Interaksi Molekul
                 </h2>
                 <div class="flex gap-3 items-center">
-                    <span id="interaction-counter" class="px-4 py-2 rounded-lg font-semibold bg-purple-100 text-purple-600">
+                    <span id="interaction-counter" class="px-5 py-2 rounded-full font-bold bg-purple-100 text-purple-600 border border-purple-200">
                         Interaksi: 0
                     </span>
-                    <button onclick="resetSimulation()" class="px-4 py-2 rounded-lg font-semibold text-white bg-purple-600 hover:bg-purple-700 transition">
+                    <button onclick="resetSimulation()" class="px-5 py-2 rounded-full font-bold text-white bg-purple-600 hover:bg-purple-700 transition shadow-lg hover:shadow-purple-500/30">
                         🔄 Reset
                     </button>
                 </div>
             </div>
             
-            <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                <svg id="simulation-canvas" width="100%" height="400" style="max-width: 600px; display: block; margin: 0 auto;">
-                    <!-- Canvas akan diisi oleh JavaScript -->
-                </svg>
+            <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 shadow-inner">
+                <svg id="simulation-canvas" width="100%" height="400" style="max-width: 100%; display: block; margin: 0 auto; cursor: crosshair;">
+                    </svg>
             </div>
             
-            <!-- Legend -->
-            <div class="mt-6 grid grid-cols-5 gap-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-blue-500"></div>
-                    <span class="text-sm">H₂O</span>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-200">
+                    <div class="w-4 h-4 rounded-full bg-blue-500 shadow-sm"></div>
+                    <span class="text-sm font-semibold text-blue-700">H₂O</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-purple-500"></div>
-                    <span class="text-sm">NH₃</span>
+                <div class="flex items-center gap-2 bg-purple-50 px-4 py-2 rounded-full border border-purple-200">
+                    <div class="w-4 h-4 rounded-full bg-purple-500 shadow-sm"></div>
+                    <span class="text-sm font-semibold text-purple-700">NH₃</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-green-500"></div>
-                    <span class="text-sm">CH₄</span>
+                <div class="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-200">
+                    <div class="w-4 h-4 rounded-full bg-green-500 shadow-sm"></div>
+                    <span class="text-sm font-semibold text-green-700">CH₄</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-yellow-500"></div>
-                    <span class="text-sm">HCl</span>
+                <div class="flex items-center gap-2 bg-yellow-50 px-4 py-2 rounded-full border border-yellow-200">
+                    <div class="w-4 h-4 rounded-full bg-yellow-500 shadow-sm"></div>
+                    <span class="text-sm font-semibold text-yellow-700">HCl</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-red-500"></div>
-                    <span class="text-sm">CO₂</span>
+                <div class="flex items-center gap-2 bg-red-50 px-4 py-2 rounded-full border border-red-200">
+                    <div class="w-4 h-4 rounded-full bg-red-500 shadow-sm"></div>
+                    <span class="text-sm font-semibold text-red-700">CO₂</span>
                 </div>
             </div>
         </div>
 
-        <!-- Panduan -->
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-purple-500">
-                <h3 class="font-bold text-purple-800 text-xl mb-4 flex items-center gap-2">
-                    <span class="text-2xl">🎯</span>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 border-l-8 border-pink-500 fade-in" style="animation-delay: 0.1s;">
+                <h3 class="font-bold text-gray-800 text-2xl mb-6 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
                     Panduan Simulasi
                 </h3>
-                <ol class="list-decimal list-inside space-y-3 text-gray-700">
-                    <li><strong>Seret molekul</strong> menggunakan mouse/touch</li>
-                    <li><strong>Dekatkan molekul</strong> hingga jarak &lt; 100px</li>
-                    <li><strong>Garis interaksi</strong> akan muncul otomatis</li>
-                    <li><strong>Baca informasi</strong> jenis dan kekuatan interaksi</li>
-                    <li><strong>Cari semua interaksi</strong> yang mungkin terjadi!</li>
+                <ol class="space-y-4 text-gray-600 relative">
+                    <li class="flex items-start gap-3">
+                        <span class="bg-pink-100 text-pink-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">1</span>
+                        <span><strong>Seret molekul</strong> menggunakan mouse atau sentuhan jari.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-pink-100 text-pink-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">2</span>
+                        <span><strong>Dekatkan molekul</strong> satu sama lain hingga jarak &lt; 100px.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-pink-100 text-pink-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">3</span>
+                        <span><strong>Garis interaksi</strong> putus-putus akan muncul otomatis.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-pink-100 text-pink-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">4</span>
+                        <span><strong>Baca informasi</strong> yang muncul mengenai jenis dan kekuatan gaya.</span>
+                    </li>
                 </ol>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-800 text-xl mb-4 flex items-center gap-2">
-                    <span class="text-2xl">💡</span>
+            <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 border-l-8 border-blue-500 fade-in" style="animation-delay: 0.2s;">
+                <h3 class="font-bold text-gray-800 text-2xl mb-6 flex items-center gap-3">
+                    <span class="text-3xl">💡</span>
                     Konsep yang Dipelajari
                 </h3>
-                <div class="space-y-4 text-gray-700">
-                    <div class="bg-blue-50 p-3 rounded-lg">
-                        <h4 class="font-bold text-blue-700 mb-1">🔵 Gaya London (Dispersi)</h4>
-                        <p class="text-sm">Lemah, terjadi pada semua molekul non-polar</p>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-2xl border border-blue-200">
+                        <h4 class="font-bold text-blue-800 mb-1 flex items-center gap-2">
+                            <span>🔵</span> Gaya London (Dispersi)
+                        </h4>
+                        <p class="text-blue-700 text-sm">Lemah, terjadi pada semua molekul terutama non-polar.</p>
                     </div>
-                    <div class="bg-purple-50 p-3 rounded-lg">
-                        <h4 class="font-bold text-purple-700 mb-1">🟣 Dipol-Dipol</h4>
-                        <p class="text-sm">Sedang, terjadi antara molekul polar</p>
+                    <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-2xl border border-purple-200">
+                        <h4 class="font-bold text-purple-800 mb-1 flex items-center gap-2">
+                            <span>🟣</span> Dipol-Dipol
+                        </h4>
+                        <p class="text-purple-700 text-sm">Kekuatan sedang, terjadi antara molekul polar.</p>
                     </div>
-                    <div class="bg-green-50 p-3 rounded-lg">
-                        <h4 class="font-bold text-green-700 mb-1">🟢 Ikatan Hidrogen</h4>
-                        <p class="text-sm">Kuat, terjadi pada H-F, H-O, H-N</p>
+                    <div class="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-2xl border border-green-200">
+                        <h4 class="font-bold text-green-800 mb-1 flex items-center gap-2">
+                            <span>🟢</span> Ikatan Hidrogen
+                        </h4>
+                        <p class="text-green-700 text-sm">Paling kuat, terjadi pada ikatan H dengan F, O, atau N.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Tabel Interaksi -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h3 class="font-bold text-gray-800 text-xl mb-4 flex items-center gap-2">
-                <span class="text-2xl">📊</span>
-                Jenis Interaksi Molekul
+        <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 mb-8 border-l-8 border-green-500 fade-in" style="animation-delay: 0.3s;">
+            <h3 class="font-bold text-gray-800 text-2xl mb-6 flex items-center gap-3">
+                <span class="text-3xl">📊</span>
+                Referensi Jenis Interaksi
             </h3>
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto rounded-xl border border-gray-200">
                 <table class="w-full text-left">
-                    <thead class="bg-gray-100">
+                    <thead class="bg-gray-50 text-gray-700">
                         <tr>
-                            <th class="p-3 text-gray-700 font-bold">Molekul 1</th>
-                            <th class="p-3 text-gray-700 font-bold">Molekul 2</th>
-                            <th class="p-3 text-gray-700 font-bold">Jenis Gaya</th>
-                            <th class="p-3 text-gray-700 font-bold">Kekuatan</th>
-                            <th class="p-3 text-gray-700 font-bold">Deskripsi</th>
+                            <th class="p-4 font-extrabold uppercase text-xs tracking-wider">Molekul 1</th>
+                            <th class="p-4 font-extrabold uppercase text-xs tracking-wider">Molekul 2</th>
+                            <th class="p-4 font-extrabold uppercase text-xs tracking-wider">Jenis Gaya</th>
+                            <th class="p-4 font-extrabold uppercase text-xs tracking-wider">Kekuatan</th>
+                            <th class="p-4 font-extrabold uppercase text-xs tracking-wider">Deskripsi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-3 font-bold text-blue-600">H₂O</td>
-                            <td class="p-3 font-bold text-blue-600">H₂O</td>
-                            <td class="p-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Ikatan Hidrogen</span></td>
-                            <td class="p-3 font-bold text-green-600">Kuat</td>
-                            <td class="p-3 text-sm">O-H...O membentuk ikatan hidrogen sangat kuat</td>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="p-4 font-bold text-blue-600">H₂O</td>
+                            <td class="p-4 font-bold text-blue-600">H₂O</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Ikatan Hidrogen</span></td>
+                            <td class="p-4 font-bold text-green-600">Kuat</td>
+                            <td class="p-4 text-sm text-gray-600">O-H...O membentuk ikatan hidrogen sangat kuat</td>
                         </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-3 font-bold text-blue-600">H₂O</td>
-                            <td class="p-3 font-bold text-purple-600">NH₃</td>
-                            <td class="p-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Ikatan Hidrogen</span></td>
-                            <td class="p-3 font-bold text-green-600">Kuat</td>
-                            <td class="p-3 text-sm">O-H...N membentuk ikatan hidrogen</td>
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="p-4 font-bold text-blue-600">H₂O</td>
+                            <td class="p-4 font-bold text-purple-600">NH₃</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Ikatan Hidrogen</span></td>
+                            <td class="p-4 font-bold text-green-600">Kuat</td>
+                            <td class="p-4 text-sm text-gray-600">O-H...N membentuk ikatan hidrogen</td>
                         </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-3 font-bold text-blue-600">H₂O</td>
-                            <td class="p-3 font-bold text-yellow-600">HCl</td>
-                            <td class="p-3"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">Dipol-Dipol</span></td>
-                            <td class="p-3 font-bold text-yellow-600">Sedang</td>
-                            <td class="p-3 text-sm">Interaksi antara molekul polar</td>
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="p-4 font-bold text-blue-600">H₂O</td>
+                            <td class="p-4 font-bold text-yellow-600">HCl</td>
+                            <td class="p-4"><span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Dipol-Dipol</span></td>
+                            <td class="p-4 font-bold text-yellow-600">Sedang</td>
+                            <td class="p-4 text-sm text-gray-600">Interaksi antara molekul polar</td>
                         </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-3 font-bold text-purple-600">NH₃</td>
-                            <td class="p-3 font-bold text-purple-600">NH₃</td>
-                            <td class="p-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Ikatan Hidrogen</span></td>
-                            <td class="p-3 font-bold text-green-600">Kuat</td>
-                            <td class="p-3 text-sm">N-H...N membentuk ikatan hidrogen</td>
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="p-4 font-bold text-purple-600">NH₃</td>
+                            <td class="p-4 font-bold text-purple-600">NH₃</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Ikatan Hidrogen</span></td>
+                            <td class="p-4 font-bold text-green-600">Kuat</td>
+                            <td class="p-4 text-sm text-gray-600">N-H...N membentuk ikatan hidrogen</td>
                         </tr>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-3 font-bold text-green-600">CH₄</td>
-                            <td class="p-3 font-bold text-green-600">CH₄</td>
-                            <td class="p-3"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Gaya London</span></td>
-                            <td class="p-3 font-bold text-red-600">Lemah</td>
-                            <td class="p-3 text-sm">Gaya dispersi antar molekul nonpolar</td>
+                        <tr class="hover:bg-red-50 transition-colors">
+                            <td class="p-4 font-bold text-green-600">CH₄</td>
+                            <td class="p-4 font-bold text-green-600">CH₄</td>
+                            <td class="p-4"><span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Gaya London</span></td>
+                            <td class="p-4 font-bold text-red-600">Lemah</td>
+                            <td class="p-4 text-sm text-gray-600">Gaya dispersi antar molekul nonpolar</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Tujuan Simulasi -->
-        <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-6 text-white">
-            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
-                <span class="text-3xl">🎯</span>
-                Tujuan Simulasi
-            </h3>
-            <ul class="space-y-3">
-                <li class="flex items-start gap-3">
-                    <span class="bg-white text-purple-600 rounded-full w-6 h-6 flex items-center justify-center font-bold flex-shrink-0">1</span>
-                    <span>Memahami perbedaan gaya London, dipol-dipol, dan ikatan hidrogen</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="bg-white text-purple-600 rounded-full w-6 h-6 flex items-center justify-center font-bold flex-shrink-0">2</span>
-                    <span>Menganalisis faktor jarak dan polaritas dalam interaksi molekul</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="bg-white text-purple-600 rounded-full w-6 h-6 flex items-center justify-center font-bold flex-shrink-0">3</span>
-                    <span>Memprediksi jenis interaksi berdasarkan molekul yang berdekatan</span>
-                </li>
-            </ul>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 fade-in" style="animation-delay: 0.4s;">
+    <a href="{{ route('materi') }}" 
+       class="group relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative z-10 flex flex-col items-center justify-center gap-3">
+            <span class="text-5xl">📖</span>
+            <div>
+                <div class="text-lg font-semibold opacity-90">Kembali ke</div>
+                <div class="text-xl">Materi</div>
+            </div>
         </div>
+    </a>
 
-        <!-- Navigation Buttons -->
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
-            <a href="{{ route('materi') }}"
-               class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition text-center">
-                <span class="flex items-center justify-center gap-2">
-                    <span>📖</span>
-                    <span>Review Materi</span>
-                </span>
-            </a>
-            <a href="{{ route('simulasi') }}"
-               class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition text-center">
-                <span class="flex items-center justify-center gap-2">
-                    <span>🔬</span>
-                    <span>Virtual Lab</span>
-                </span>
-            </a>
-            <a href="{{ route('kuis.index') }}"
-               class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition text-center">
-                <span class="flex items-center justify-center gap-2">
-                    <span>📝</span>
-                    <span>Mulai Kuis</span>
-                </span>
-            </a>
+    <a href="{{ route('simulasi') }}" 
+       class="group relative bg-gradient-to-r from-green-600 to-teal-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-r from-green-700 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative z-10 flex flex-col items-center justify-center gap-3">
+            <span class="text-5xl">🔬</span>
+            <div>
+                <div class="text-lg font-semibold opacity-90">Lanjut ke</div>
+                <div class="text-xl">Virtual Lab</div>
+            </div>
         </div>
-    </div>
+    </a>
+
+    <a href="{{ route('kuis.index') }}" 
+       class="group relative bg-gradient-to-r from-orange-600 to-red-600 text-white py-6 px-8 rounded-2xl text-center font-bold text-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-700 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative z-10 flex flex-col items-center justify-center gap-3">
+            <span class="text-5xl">📝</span>
+            <div>
+                <div class="text-lg font-semibold opacity-90">Tes di</div>
+                <div class="text-xl">Kuis Interaktif</div>
+            </div>
+        </div>
+    </a>
 </div>
 
 <script>
@@ -258,6 +261,7 @@ function initSimulation() {
         circle.setAttribute('r', 28);
         circle.setAttribute('fill', mol.color);
         circle.setAttribute('opacity', '0.9');
+        circle.setAttribute('filter', 'drop-shadow(0px 2px 3px rgba(0,0,0,0.2))'); // Add depth
         
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', mol.x + 30);
@@ -266,6 +270,7 @@ function initSimulation() {
         text.setAttribute('fill', 'white');
         text.setAttribute('font-weight', 'bold');
         text.setAttribute('font-size', '14');
+        text.setAttribute('style', 'pointer-events: none;'); // Allow click through text
         text.textContent = mol.label;
         
         g.appendChild(circle);
@@ -295,12 +300,12 @@ function renderInteractions(svg) {
         line.setAttribute('x2', int.x2);
         line.setAttribute('y2', int.y2);
         line.setAttribute('stroke', int.color);
-        line.setAttribute('stroke-width', '2');
+        line.setAttribute('stroke-width', '3'); // Thicker line
         line.setAttribute('class', 'interaction-line');
-        line.style.strokeDasharray = '5,5';
+        line.style.strokeDasharray = '8,4';
         line.style.animation = 'dash 1s linear infinite';
         
-        svg.appendChild(line);
+        svg.insertBefore(line, svg.firstChild); // Place lines behind molecules
     });
 }
 
@@ -343,7 +348,7 @@ function detectInteractions() {
         
         // Celebration jika mencapai 5 interaksi
         if (interactionCount === 5) {
-            showToast('🎉 Pencapaian: Menemukan 5 interaksi molekul!');
+            showToast('🎉 Hebat! Kamu menemukan 5 interaksi!');
         }
     }
     
@@ -381,6 +386,7 @@ function startDrag(e) {
     };
     
     e.currentTarget.style.cursor = 'grabbing';
+    e.currentTarget.setAttribute('opacity', '1'); // Highlight dragged item
     
     // Add global listeners
     document.addEventListener('mousemove', drag);
@@ -408,8 +414,8 @@ function drag(e) {
     if (!molecule) return;
     
     // Update position dengan batas
-    molecule.x = Math.max(0, Math.min(540, clientX - rect.left - dragging.offsetX - 30));
-    molecule.y = Math.max(0, Math.min(340, clientY - rect.top - dragging.offsetY - 30));
+    molecule.x = Math.max(0, Math.min(rect.width - 60, clientX - rect.left - dragging.offsetX - 30));
+    molecule.y = Math.max(0, Math.min(rect.height - 60, clientY - rect.top - dragging.offsetY - 30));
     
     // Update visual
     const g = document.querySelector(`[data-id="${dragging.id}"]`);
@@ -426,7 +432,10 @@ function drag(e) {
 function endDrag() {
     if (dragging) {
         const g = document.querySelector(`[data-id="${dragging.id}"]`);
-        if (g) g.style.cursor = 'grab';
+        if (g) {
+            g.style.cursor = 'grab';
+            g.querySelector('circle').setAttribute('opacity', '0.9'); // Restore opacity
+        }
         dragging = null;
     }
     
@@ -449,21 +458,24 @@ function resetSimulation() {
     interactionCount = 0;
     
     initSimulation();
-    showToast('🔄 Simulasi direset ke posisi awal!');
+    showToast('🔄 Posisi molekul telah direset!');
 }
 
 // Show toast notification
 function showToast(message) {
     // Create toast element
     const toast = document.createElement('div');
-    toast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slideIn';
-    toast.textContent = message;
+    toast.className = 'fixed bottom-8 right-8 bg-gray-800 text-white px-6 py-4 rounded-xl shadow-2xl z-50 animate-slideIn flex items-center gap-3 border border-gray-700';
+    toast.innerHTML = `<span class="text-xl">✨</span><span class="font-semibold">${message}</span>`;
     
     document.body.appendChild(toast);
     
     // Remove after 3 seconds
     setTimeout(() => {
-        toast.remove();
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(100%)';
+        toast.style.transition = 'all 0.5s ease';
+        setTimeout(() => toast.remove(), 500);
     }, 3000);
 }
 
@@ -471,27 +483,18 @@ function showToast(message) {
 document.addEventListener('DOMContentLoaded', function() {
     initSimulation();
     
-    // Add CSS animation
+    // Add CSS animation for dash lines
     const style = document.createElement('style');
     style.textContent = `
         @keyframes dash {
-            to { stroke-dashoffset: -10; }
+            to { stroke-dashoffset: -20; }
         }
         @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         .animate-slideIn {
-            animation: slideIn 0.3s ease;
-        }
-        .molecule {
-            transition: transform 0.1s;
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
     `;
     document.head.appendChild(style);
